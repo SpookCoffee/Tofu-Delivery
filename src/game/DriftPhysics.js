@@ -6,7 +6,7 @@ import { clamp } from './trackData.js';
  * It is intentionally NOT a real-world tire simulation.
  */
 export function stepPhysics(state,input,dt,surface='ASPHALT',grade=0) {
-  const steer=Number(!!input.right)-Number(!!input.left);
+  const steer=Number(!!input.left)-Number(!!input.right);
   const brake=!!input.handbrake;
   const throttle=Number(!!input.forward)-Number(!!input.back);
   const forwardX=Math.sin(state.heading),forwardZ=Math.cos(state.heading);
