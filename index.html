@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#151517">
+  <meta name="description" content="Tofu Delivery: a free-roam 3D mountain drifting game with an 80s AE86-style coupe, smoke, hairpins and real elevation.">
+  <title>Tofu Delivery · Mountain Drift</title>
+  <!-- Static ES modules work on GitHub Pages and VS Code Live Server without a build tool. -->
+  <script type="importmap">{
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.181.0/build/three.module.js"
+    }
+  }</script>
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <script type="module" src="./src/main.js"></script>
+</head>
+<body>
+  <main id="game" aria-label="Mountain Drift game">
+    <div id="viewport" aria-label="3D mountain driving scene"></div>
+    <header class="topbar">
+      <div class="brand"><span class="mark">◆</span> TOFU DELIVERY <span class="sub-brand">/ MOUNTAIN DRIFT</span></div>
+      <div class="release">PROTOTYPE <b>v0.1 Alpha</b></div>
+    </header>
+    <section class="intro panel" aria-label="How to play">
+      <p class="eyebrow">HIGH-ALTITUDE FREE ROAM</p>
+      <h1>Own the downhill.</h1>
+      <p>Explore a winding mountain pass, link hairpins together, and slide the rear-wheel-drive Eight-Six through the corners.</p>
+      <div class="controls-help">
+        <div><kbd>W</kbd><kbd>↑</kbd> Accelerate &nbsp; <kbd>S</kbd><kbd>↓</kbd> Brake / reverse</div>
+        <div><kbd>A</kbd><kbd>D</kbd> or <kbd>←</kbd><kbd>→</kbd> Steer</div>
+        <div><kbd>SPACE</kbd> Handbrake / drift &nbsp; <kbd>C</kbd> Camera</div>
+      </div>
+      <div class="start-buttons">
+        <button id="summit-button" class="accent-button" type="button">↘ Start downhill</button>
+        <button id="base-button" type="button">↗ Start uphill</button>
+      </div>
+      <p class="note">Original Haruna-inspired route. No actual GPS map or licensed game assets.</p>
+    </section>
+    <aside class="right-panel" aria-label="Driving information">
+      <section class="panel map-panel">
+        <div class="panel-heading"><span>◆ MOUNTAIN PASS</span><span class="dim">FREE ROAM</span></div>
+        <canvas id="minimap" width="260" height="258" aria-label="Top-down illustration of mountain road with vehicle location"></canvas>
+        <p class="map-foot">TOP = SUMMIT · BASE = TOFU SHOP</p>
+      </section>
+      <section class="panel telemetry">
+        <div class="panel-heading">DRIVING HUD <span id="stage">DOWNHILL</span></div>
+        <div class="speedline"><div><b id="speed">0</b><span>km/h</span></div><span class="surface" id="surface">ASPHALT</span></div>
+        <div class="gauges"><div><small>ALTITUDE</small><strong><span id="altitude">0</span> m</strong></div><div><small>SLIP ANGLE</small><strong><span id="slip">0</span>°</strong></div></div>
+        <div id="drift-indicator" class="drift-indicator">DRIFTING <span>● TIRE SMOKE</span></div>
+      </section>
+      <section class="panel score-panel">
+        <div><small>SESSION DRIFT SCORE</small><strong id="score">0</strong></div>
+        <div><small>BEST DRIFT CHAIN</small><strong id="best">0</strong></div>
+      </section>
+    </aside>
+    <div class="bottom-bar">
+      <button id="camera-button" type="button">▣ Change camera</button>
+      <a href="https://spookcoffee.github.io/" class="home-link">⌂ Return to SpookCoffee</a>
+    </div>
+    <div class="touch-controls" aria-label="Touch driving controls">
+      <div class="touch-side"><button data-drive="left" aria-label="Steer left">◀</button><button data-drive="right" aria-label="Steer right">▶</button></div>
+      <div class="touch-side"><button data-drive="handbrake" class="handbrake">DRIFT</button><button data-drive="back">▼</button><button data-drive="forward">▲</button></div>
+    </div>
+    <div id="loading" class="loading" role="status"><strong>Building the mountain pass…</strong><p>Loading 3D engine. Internet is needed for the Three.js library.</p></div>
+  </main>
+  <noscript>This driving game requires JavaScript. <a href="https://spookcoffee.github.io/">Back to SpookCoffee</a>.</noscript>
+</body>
+</html>
